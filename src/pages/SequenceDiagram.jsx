@@ -20,6 +20,7 @@ function SequenceDiagram() {
       // Generate Mermaid code
       const mermaidResponse = await axios.post(
         "http://3.19.219.191/generate-sequence-diagram",
+       //  "http://127.0.0.1:5000/generate-sequence-diagram",
         { name }
       );
       const generatedMermaidCode = mermaidResponse.data.mermaidImage;
@@ -69,14 +70,14 @@ function SequenceDiagram() {
         />
         <br />
         <br />
-        <ColorButton type="submit" variant="contained">
-          Submit
+        <ColorButton type="submit" variant="contained" disabled={loading}>
+          {loading ? 'Loading...' : 'Submit'}
         </ColorButton>
       </form>
       <br />
       <br />
-      {loading && <p>Loading...</p>}
-      <br/>
+      {/* {loading && <p>Loading...</p>} */}
+      {/* <br/> */}
       {mermaidCode && (
         <>
           <h4>Generated Mermaid Diagram:</h4>
